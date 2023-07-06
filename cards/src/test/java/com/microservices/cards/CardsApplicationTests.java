@@ -1,10 +1,10 @@
-package com.microservices.bankApp;
+package com.microservices.cards;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class BankAppApplicationTests {
+class CardsApplicationTests {
 
 	@Test
 	void contextLoads() {
