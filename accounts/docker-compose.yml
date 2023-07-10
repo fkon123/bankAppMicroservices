@@ -1,0 +1,39 @@
+version: "3.8"
+
+services:
+
+  accounts:
+    #image: eazybytes/accounts:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    mem_limit: 700m
+    ports:
+      - "8090:8090"
+    networks:
+      - eazybank-network
+
+  loans:
+    #image: eazybytes/loans:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    mem_limit: 700m
+    ports:
+      - "8092:8092"
+    networks:
+      - eazybank-network
+
+  cards:
+    #image: eazybytes/cards:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    mem_limit: 700m
+    ports:
+      - "8091:8091"
+    networks:
+      - eazybank-network
+
+networks:
+  eazybank-network:
