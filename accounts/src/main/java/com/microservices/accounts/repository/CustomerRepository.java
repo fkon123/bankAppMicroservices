@@ -3,8 +3,8 @@ package com.microservices.accounts.repository;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.microservices.accounts.entity.Accounts;
+import com.microservices.accounts.entity.Customer;
 
 @Repository
-public interface AccountsRepository extends JpaRepository<Accounts, Long> {
+public interface CustomerRepository extends JpaRepository<Customer, Long> {
 }
