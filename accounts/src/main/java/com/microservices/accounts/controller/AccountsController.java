@@ -1,15 +1,30 @@
 package com.microservices.accounts.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.microservices.accounts.entity.Accounts;
-import com.microservices.accounts.entity.Customer;
-import com.microservices.accounts.repository.AccountsRepository;
+import com.microservices.accounts.dto.CustomerDto;
+import com.microservices.accounts.dto.ResponseDto;
+import com.microservices.accounts.constants.AccountsConstants;
+
+
 
 @RestController
+@RequestMapping(path = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AccountsController {
+
+    @PostMapping("/create")
+    public ResponseEntity<ResponseDto> createAccount(@RequestBody CustomerDto customerDto) {
+
+        return ResponseEntity
+            .status(HttpStatus.CREATED)
+                .body(new ResponseDto(AccountsConstants.STATUS_201, AccountsConstants.MESSAGE_201));
+    }
+
 
 }

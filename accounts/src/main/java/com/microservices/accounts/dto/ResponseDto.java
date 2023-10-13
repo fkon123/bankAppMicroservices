@@ -2,7 +2,7 @@ package com.microservices.accounts.dto;
 
 import lombok.*;
 @Data @AllArgsConstructor
-public class ResoponseDto {
+public class ResponseDto {
 
     private String statusCode;
 
