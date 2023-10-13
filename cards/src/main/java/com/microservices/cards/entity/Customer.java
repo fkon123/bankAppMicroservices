@@ -1,4 +1,4 @@
-package com.microservices.cards.model;
+package com.microservices.cards.entity;
 
 import lombok.Getter;
 import lombok.Setter;
