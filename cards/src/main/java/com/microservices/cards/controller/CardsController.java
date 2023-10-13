@@ -7,14 +7,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.microservices.cards.model.Cards;
-import com.microservices.cards.model.Customer;
+import com.microservices.cards.entity.Cards;
+import com.microservices.cards.entity.Customer;
 import com.microservices.cards.repository.CardsRepository;
 
-/**
- * @author Eazy Bytes
- *
- */
 
 @RestController
 public class CardsController {

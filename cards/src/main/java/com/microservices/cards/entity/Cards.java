@@ -1,21 +1,12 @@
-package com.microservices.cards.model;
+package com.microservices.cards.entity;
 
 import java.sql.Date;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 
-@Entity
-@Getter
-@Setter
-@ToString
+@Entity @Getter @Setter @ToString
 public class Cards {
 
 	@Id
