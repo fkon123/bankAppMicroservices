@@ -18,6 +18,8 @@ import com.microservices.accounts.constants.AccountsConstants;
 @RequestMapping(path = "/api", produces = MediaType.APPLICATION_JSON_VALUE)
 public class AccountsController {
 
+    
+
     @PostMapping("/create")
     public ResponseEntity<ResponseDto> createAccount(@RequestBody CustomerDto customerDto) {
 
