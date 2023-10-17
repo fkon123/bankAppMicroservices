@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.microservices.loans.constants.LoansConstants;
 import com.microservices.loans.dto.LoansDto;
 import com.microservices.loans.entity.Loans;
+import com.microservices.loans.mapper.LoansMapper;
 import com.microservices.loans.repository.LoansRepository;
 import com.microservices.loans.service.ILoansService;
 
@@ -45,9 +46,11 @@ public class LoansServiceImpl implements ILoansService {
     }
 
     @Override
-    public LoansDto getLoan(String mobileNumber) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getLoan'");
+    public LoansDto fetchLoan(String mobileNumber) {
+        Loans loans = loansRepository.findByMobileNumber(mobileNumber)
+                .orElseThrow(() -> new RuntimeException("Loan does not exist for the mobile number: " + mobileNumber));
+
+        return LoansMapper.mapToLoansDto(loans, new LoansDto());
     }
 
     @Override
