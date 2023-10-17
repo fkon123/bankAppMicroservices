@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.microservices.loans.model.Customer;
-import com.microservices.loans.model.Loans;
+import com.microservices.loans.entity.Customer;
+import com.microservices.loans.entity.Loans;
 import com.microservices.loans.repository.LoansRepository;
 
 /**

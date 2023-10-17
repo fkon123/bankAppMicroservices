@@ -5,7 +5,7 @@ import java.util.List;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
-import com.microservices.loans.model.Loans;
+import com.microservices.loans.entity.Loans;
 
 @Repository
 public interface LoansRepository extends CrudRepository<Loans, Long> {
