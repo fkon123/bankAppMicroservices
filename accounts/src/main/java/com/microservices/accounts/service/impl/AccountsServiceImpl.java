@@ -33,10 +33,12 @@ public class AccountsServiceImpl  implements IAccountsService {
     public void createAccount(CustomerDto customerDto) {
         Customer customer = CustomerMapper.mapToCustomer(customerDto, new Customer());
         Optional<Customer> optionalCustomer = customerRepository.findByMobileNumber(customerDto.getMobileNumber());
-        if(optionalCustomer.isPresent()) {
+        if (optionalCustomer.isPresent()) {
             throw new CustomerAlreadyExistsException("Customer already registered with given mobileNumber "
-                    +customerDto.getMobileNumber());
+                    + customerDto.getMobileNumber());
         }
+        customer.setCreatedAt(LocalDateTime.now());
+        customer.setCreatedBy("filippos123");
         Customer savedCustomer = customerRepository.save(customer);
         accountsRepository.save(createNewAccount(savedCustomer));
     }
@@ -53,6 +55,8 @@ public class AccountsServiceImpl  implements IAccountsService {
         newAccount.setAccountNumber(randomAccNumber);
         newAccount.setAccountType(AccountsConstants.SAVINGS);
         newAccount.setBranchAddress(AccountsConstants.ADDRESS);
+        newAccount.setCreatedAt(LocalDateTime.now());
+        newAccount.setCreatedBy("filippos123");
         return newAccount;
     }
 
