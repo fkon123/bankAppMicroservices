@@ -21,7 +21,7 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 				version = "v1",
 				contact = @Contact(
 						name = "Madan Reddy",
-						email = "tutor@eazybytes.com",
+						email = "fil13kon@test.com",
 						url = "https://www.eazybytes.com"
 				),
 				license = @License(
