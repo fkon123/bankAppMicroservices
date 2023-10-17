@@ -1,36 +1,37 @@
 package com.microservices.loans.controller;
 
-import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 
-import com.microservices.loans.entity.Customer;
-import com.microservices.loans.entity.Loans;
-import com.microservices.loans.repository.LoansRepository;
+import com.microservices.loans.constants.LoansConstants;
+import com.microservices.loans.dto.ResponseDto;
+import com.microservices.loans.service.ILoansService;
 
-/**
- * @author Eazy Bytes
- *
- */
+import lombok.AllArgsConstructor;
+
 
 @RestController
+@RequestMapping(path = "/api", produces = { MediaType.APPLICATION_JSON_VALUE })
+@AllArgsConstructor
 public class LoansController {
 
-	@Autowired
-	private LoansRepository loansRepository;
+	private ILoansService iLoansService;
 
-	@PostMapping("/myLoans")
-	public List<Loans> getLoansDetails(@RequestBody Customer customer) {
-		List<Loans> loans = loansRepository.findByCustomerIdOrderByStartDtDesc(customer.getCustomerId());
-		if (loans != null) {
-			return loans;
-		} else {
-			return null;
-		}
+	@PostMapping("/create")
+	public ResponseEntity<ResponseDto> createLoan(@RequestParam String mobileNumber) {
+		iLoansService.createLoan(mobileNumber);
+		return ResponseEntity
+				.status(HttpStatus.CREATED)
+				.body(new ResponseDto(LoansConstants.STATUS_201, LoansConstants.MESSAGE_201));
 
 	}
+
+
 
 }

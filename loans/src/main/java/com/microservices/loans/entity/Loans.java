@@ -18,7 +18,7 @@ import lombok.ToString;
 @Entity
 @Getter @Setter @ToString @AllArgsConstructor @NoArgsConstructor
 @GenericGenerator(name = "native", strategy = "native")
-public class Loans {
+public class Loans extends BaseEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "native")
