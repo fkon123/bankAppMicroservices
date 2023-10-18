@@ -4,11 +4,13 @@ import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.Random;
 
+import org.hibernate.service.spi.ServiceRegistryAwareService;
 import org.springframework.stereotype.Service;
 
 import com.microservices.loans.constants.LoansConstants;
 import com.microservices.loans.dto.LoansDto;
 import com.microservices.loans.entity.Loans;
+import com.microservices.loans.exception.LoanAlreadyExistsException;
 import com.microservices.loans.exception.ResourceNotFoundException;
 import com.microservices.loans.mapper.LoansMapper;
 import com.microservices.loans.repository.LoansRepository;
@@ -26,7 +28,7 @@ public class LoansServiceImpl implements ILoansService {
     public void createLoan(String mobileNumber) {
         Optional<Loans> optionalLoans = loansRepository.findByMobileNumber(mobileNumber);
         if (optionalLoans.isPresent()) {
-            throw new RuntimeException("Loan already exists for the mobile number: " + mobileNumber);
+            throw new LoanAlreadyExistsException("Loan already exists for the mobile number: " + mobileNumber);
         }
         loansRepository.save(createNewLoan(mobileNumber));
     }
@@ -49,7 +51,7 @@ public class LoansServiceImpl implements ILoansService {
     @Override
     public LoansDto fetchLoan(String mobileNumber) {
         Loans loans = loansRepository.findByMobileNumber(mobileNumber)
-                .orElseThrow(() -> new RuntimeException("Loan does not exist for the mobile number: " + mobileNumber));
+                .orElseThrow(() -> new ResourceNotFoundException("Loan", "mobileNumber", mobileNumber));
 
         return LoansMapper.mapToLoansDto(loans, new LoansDto());
     }
