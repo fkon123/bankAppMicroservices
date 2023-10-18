@@ -2,6 +2,23 @@
     "configurations": [
         {
             "type": "java",
+            "name": "LoansApplication",
+            "request": "launch",
+            "mainClass": "com.microservices.loans.LoansApplication",
+            "projectName": "bankApp"
+        },
+        {
+            "type": "java",
+            "name": "Spring Boot-AccountsApplication<loans>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.microservices.loans.LoansApplication",
+            "projectName": "loans",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        },
+        {
+            "type": "java",
             "name": "Spring Boot-AccountsApplication<accounts>",
             "request": "launch",
             "cwd": "${workspaceFolder}",

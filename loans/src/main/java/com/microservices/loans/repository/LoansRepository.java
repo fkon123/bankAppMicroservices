@@ -1,16 +1,18 @@
 package com.microservices.loans.repository;
 
-import java.util.List;
+import java.util.Optional;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.microservices.loans.model.Loans;
+import com.microservices.loans.entity.Loans;
 
 @Repository
-public interface LoansRepository extends CrudRepository<Loans, Long> {
+public interface LoansRepository extends JpaRepository<Loans, Long> {
 
 
-	List<Loans> findByCustomerIdOrderByStartDtDesc(int customerId);
+	Optional<Loans> findByMobileNumber(String mobileNumber);
+
+	Optional<Loans> findByLoanNumber(String loanNumber);
 
 }
