@@ -1,6 +1,7 @@
 package com.microservices.loans.controller;
 
 
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -51,19 +52,33 @@ public class LoansController {
 	}
 
 	@PutMapping("/update")
-    public ResponseEntity<ResponseDto> updateLoanDetails(@Valid @RequestBody LoansDto loansDto) {
-        boolean isUpdated = iLoansService.updateLoan(loansDto);
-        if(isUpdated) {
-            return ResponseEntity
-                    .status(HttpStatus.OK)
-                    .body(new ResponseDto(LoansConstants.STATUS_200, LoansConstants.MESSAGE_200));
-        }else{
-            return ResponseEntity
-                    .status(HttpStatus.EXPECTATION_FAILED)
-                    .body(new ResponseDto(LoansConstants.STATUS_417, LoansConstants.MESSAGE_417_UPDATE));
-        }
-    }
-
-
-
+	public ResponseEntity<ResponseDto> updateLoanDetails(@Valid @RequestBody LoansDto loansDto) {
+		boolean isUpdated = iLoansService.updateLoan(loansDto);
+		if (isUpdated) {
+			return ResponseEntity
+					.status(HttpStatus.OK)
+					.body(new ResponseDto(LoansConstants.STATUS_200, LoansConstants.MESSAGE_200));
+		} else {
+			return ResponseEntity
+					.status(HttpStatus.EXPECTATION_FAILED)
+					.body(new ResponseDto(LoansConstants.STATUS_417, LoansConstants.MESSAGE_417_UPDATE));
+		}
 	}
+
+	@DeleteMapping("/delete")
+	public ResponseEntity<ResponseDto> deleteLoanDetails(@RequestParam String mobileNumber) {
+
+		boolean isDeleted = iLoansService.deleteLoan(mobileNumber);
+
+		if (isDeleted) {
+			return ResponseEntity
+					.status(HttpStatus.OK)
+					.body(new ResponseDto(LoansConstants.STATUS_200, LoansConstants.MESSAGE_200));
+		} else {
+			return ResponseEntity
+					.status(HttpStatus.EXPECTATION_FAILED)
+					.body(new ResponseDto(LoansConstants.STATUS_417, LoansConstants.MESSAGE_417_DELETE));
+		}
+	}
+
+}

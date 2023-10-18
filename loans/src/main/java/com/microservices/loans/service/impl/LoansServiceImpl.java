@@ -65,8 +65,10 @@ public class LoansServiceImpl implements ILoansService {
 
     @Override
     public boolean deleteLoan(String mobileNumber) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteLoan'");
+        Loans loans = loansRepository.findByMobileNumber(mobileNumber)
+                .orElseThrow(() -> new RuntimeException("Loan does not exist for the mobile number: " + mobileNumber));
+        loansRepository.deleteById(loans.getLoanId());
+        return true;
     }
 
 }
