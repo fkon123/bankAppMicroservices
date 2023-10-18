@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.microservices.loans.constants.LoansConstants;
 import com.microservices.loans.dto.LoansDto;
 import com.microservices.loans.entity.Loans;
+import com.microservices.loans.exception.ResourceNotFoundException;
 import com.microservices.loans.mapper.LoansMapper;
 import com.microservices.loans.repository.LoansRepository;
 import com.microservices.loans.service.ILoansService;
@@ -55,8 +56,11 @@ public class LoansServiceImpl implements ILoansService {
 
     @Override
     public boolean updateLoan(LoansDto loansDto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'updateLoan'");
+        Loans loans = loansRepository.findByLoanNumber(loansDto.getLoanNumber()).orElseThrow(
+                () -> new ResourceNotFoundException("Loan", "LoanNumber", loansDto.getLoanNumber()));
+        LoansMapper.mapToLoans(loansDto, loans);
+        loansRepository.save(loans);
+        return  true;
     }
 
     @Override
