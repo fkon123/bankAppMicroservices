@@ -10,30 +10,15 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 @SpringBootApplication
-/*@ComponentScans({ @ComponentScan("com.microservices.cards.controller") })
-@EnableJpaRepositories("com.microservices.cards.repository")
-@EntityScan("com.microservices.cards.model")*/
+/*
+ * @ComponentScans({ @ComponentScan("com.microservices.cards.controller") })
+ * 
+ * @EnableJpaRepositories("com.microservices.cards.repository")
+ * 
+ * @EntityScan("com.microservices.cards.model")
+ */
 @EnableJpaAuditing(auditorAwareRef = "auditAwareImpl")
-@OpenAPIDefinition(
-		info = @Info(
-				title = "Cards microservice REST API Documentation",
-				description = "EazyBank Cards microservice REST API Documentation",
-				version = "v1",
-				contact = @Contact(
-						name = "Madan Reddy",
-						email = "tutor@microservices.com",
-						url = "https://www.microservices.com"
-				),
-				license = @License(
-						name = "Apache 2.0",
-						url = "https://www.microservices.com"
-				)
-		),
-		externalDocs = @ExternalDocumentation(
-				description = "EazyBank Cards microservice REST API Documentation",
-				url = "https://www.microservices.com/swagger-ui.html"
-		)
-)
+@OpenAPIDefinition(info = @Info(title = "Cards microservice REST API Documentation", description = "microservicesBank Cards microservice REST API Documentation", version = "v1", contact = @Contact(name = "Madan Reddy", email = "tutor@microservices.com", url = "https://www.microservices.com"), license = @License(name = "Apache 2.0", url = "https://www.microservices.com")), externalDocs = @ExternalDocumentation(description = "microservicesBank Cards microservice REST API Documentation", url = "https://www.microservices.com/swagger-ui.html"))
 public class CardsApplication {
 
 	public static void main(String[] args) {
