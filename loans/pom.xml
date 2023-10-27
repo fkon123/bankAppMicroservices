@@ -70,7 +70,7 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<image>
-						<name>fkon/${project.artifactId}:bankApp</name>
+						<name>fkon123/${project.artifactId}:bankApp</name>
 					</image>
 					<excludes>
 						<exclude>
