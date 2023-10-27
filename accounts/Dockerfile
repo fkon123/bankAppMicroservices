@@ -1,5 +1,5 @@
 #Start with a base image containing Java runtime
-FROM openjdk:17-jdk-slim as build
+FROM openjdk:17-jdk-slim
 
 #Information around who maintains the image
 MAINTAINER fkon123
