@@ -14,3 +14,6 @@ run img to container --> docker run -p 8090:8090 fkon/accounts:s4, docker run -d
 
 ***for buildpacks image with mvn command***
 build image --> mvn spring-boot:build-image
+
+***for jib image with mvn command***
+build image --> mvn compile jib:dockerBuild
