@@ -18,3 +18,12 @@ spring:
 build:
     version: "1.0"
 
+accounts:
+    message: "Hello World"
+    contactDetails:
+        name: "fil123"
+        email: "fil13kon@gmail.com"
+    onCallSupport:
+        - (555) 555-5555
+        - (666) 666-6666
+

@@ -1,6 +1,7 @@
 package com.microservices.accounts.controller;
 
 import com.microservices.accounts.constants.AccountsConstants;
+import com.microservices.accounts.dto.AccountsContactInfoDto;
 import com.microservices.accounts.dto.CustomerDto;
 import com.microservices.accounts.dto.ErrorResponseDto;
 import com.microservices.accounts.dto.ResponseDto;
@@ -41,6 +42,9 @@ public class AccountsController {
 
         @Autowired
         private Environment environment;
+
+        @Autowired
+        private AccountsContactInfoDto accountsContactInfoDto;
 
         @Operation(summary = "Create Account REST API", description = "REST API to create new Customer &  Account inside microservicesBank")
         @ApiResponses({
@@ -129,6 +133,13 @@ public class AccountsController {
                 return ResponseEntity
                                 .status(HttpStatus.OK)
                                 .body(environment.getProperty("java.version"));
+        }
+
+        @GetMapping("/contact-info")
+        public ResponseEntity<AccountsContactInfoDto> getContactInfo() {
+                return ResponseEntity
+                                .status(HttpStatus.OK)
+                                .body(accountsContactInfoDto);
         }
 
 }
