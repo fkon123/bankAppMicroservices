@@ -15,6 +15,7 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.Pattern;
 import lombok.AllArgsConstructor;
 
+import org.springframework.core.env.Environment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
@@ -37,6 +38,9 @@ public class AccountsController {
 
         @Value("${build.version}")
         private String buildVersion;
+
+        @Autowired
+        private Environment environment;
 
         @Operation(summary = "Create Account REST API", description = "REST API to create new Customer &  Account inside microservicesBank")
         @ApiResponses({
@@ -118,6 +122,13 @@ public class AccountsController {
                 return ResponseEntity
                                 .status(HttpStatus.OK)
                                 .body(buildVersion);
+        }
+
+        @GetMapping("/java-version")
+        public ResponseEntity<String> getJavaVersion() {
+                return ResponseEntity
+                                .status(HttpStatus.OK)
+                                .body(environment.getProperty("java.version"));
         }
 
 }
