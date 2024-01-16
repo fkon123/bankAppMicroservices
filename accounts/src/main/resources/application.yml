@@ -14,3 +14,23 @@ spring:
         hibernate:
             ddl-auto: update
         show-sql: true
+    config:
+        import:
+            - "application_qa.yml"
+            - "application_prod.yml"
+    profiles:
+        active:
+            - "qa"
+
+build:
+    version: "3.0"
+
+accounts:
+    message: "Hello World DEV API"
+    contactDetails:
+        name: "fil123"
+        email: "fil13kon@gmail.com"
+    onCallSupport:
+        - (555) 555-5555
+        - (666) 666-6666
+
