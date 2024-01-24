@@ -2,6 +2,13 @@
   "configurations": [
     {
       "type": "java",
+      "name": "ConfigserverApplication",
+      "request": "launch",
+      "mainClass": "com.microservices.configserver.ConfigserverApplication",
+      "projectName": "configserver"
+    },
+    {
+      "type": "java",
       "name": "CardsApplication",
       "request": "launch",
       "mainClass": "com.microservices.cards.CardsApplication",
