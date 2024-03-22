@@ -14,19 +14,21 @@ spring:
         hibernate:
             ddl-auto: update
         show-sql: true
-    profiles:
-        active:
-            - "qa"
 
-build:
-    version: "3.0"
+#uncomment in order to run else we take error
+#     profiles:
+#         active:
+#             - "qa"
 
-accounts:
-    message: "Hello World DEV API"
-    contactDetails:
-        name: "fil123"
-        email: "fil13kon@gmail.com"
-    onCallSupport:
-        - (555) 555-5555
-        - (666) 666-6666
+# build:
+#     version: "3.0"
+
+# accounts:
+#     message: "Hello World DEV API"
+#     contactDetails:
+#         name: "fil123"
+#         email: "fil13kon@gmail.com"
+#     onCallSupport:
+#         - (555) 555-5555
+#         - (666) 666-6666
 
