@@ -5,7 +5,7 @@ spring:
     url: jdbc:h2:mem:testdb
     driverClassName: org.h2.Driver
     username: sa
-    password: ''
+    password: ""
   h2:
     console:
       enabled: true
@@ -15,7 +15,7 @@ spring:
       ddl-auto: update
     show-sql: true
 
-#uncomment in order to run else we take error
+  #uncomment in order to run else we take error
 #   config:
 #     import:
 #       - "application_qa.yml"
